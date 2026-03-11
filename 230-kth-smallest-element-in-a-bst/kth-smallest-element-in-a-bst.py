@@ -1,8 +1,8 @@
 class Solution:
     def kthSmallest(self, root, k):
         
-        self.count = 0
-        self.answer = None
+        self.k = k
+        self.result = None
         
         def inorder(node):
             if not node:
@@ -10,12 +10,12 @@ class Solution:
             
             inorder(node.left)
             
-            self.count += 1
-            if self.count == k:
-                self.answer = node.val
+            self.k -= 1
+            if self.k == 0:
+                self.result = node.val
                 return
             
             inorder(node.right)
         
         inorder(root)
-        return self.answer
+        return self.result

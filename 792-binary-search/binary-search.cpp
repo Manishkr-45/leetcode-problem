@@ -1,22 +1,24 @@
 class Solution {
 public:
+    int bs(vector<int>& arr, int tar,int st, int end ){
+        if(st <= end){
+            int mid =  st +(end-st)/2;
+            if(arr[mid] == tar) return mid;
+            else if(arr[mid]>=tar){
+                return bs(arr,tar,st,mid-1);
+            }
+            else{
+                return bs(arr,tar,mid+1,end);
+            }
+        }
+        return -1;
+    }
     int search(vector<int>& nums, int target) {
         int st = 0;
         int end = nums.size()-1;
-        while(st<=end){
-            int mid= st + (end-st)/2;
-            if(target > nums[mid]){
-                st=mid+1;
-            }
-            else if(target < nums[mid]){
-                end=mid-1;
-            }
-            else{
-                return mid;
-            }
 
-            }
-            return -1;
+        return(bs(nums,target,st,end));
+        
         }
         
         

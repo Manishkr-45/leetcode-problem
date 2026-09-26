@@ -9,7 +9,7 @@ class Solution {
                 mid--;
             }
             if(nums[mid]==nums[mid+1]){
-                st += 2;
+                st = mid+2;
             }
             else{
                 end = mid;

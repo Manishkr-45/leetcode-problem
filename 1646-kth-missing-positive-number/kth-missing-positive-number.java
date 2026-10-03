@@ -16,7 +16,6 @@ class Solution {
                 end = mid;
             }
         }
-
         return k + st;
     }
 }

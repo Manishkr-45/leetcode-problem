@@ -4,18 +4,19 @@ class Solution {
             return false;
         }
         int freq[] = new int[26];
+        int win[] = new int[26];
         for(int i = 0; i<s1.length(); i++){
             char ch = s1.charAt(i);
             freq[ch-'a']++;
+            win[s2.charAt(i) - 'a']++;
         }
-        for(int i = 0; i<=s2.length()-s1.length(); i++){
-            int arr[] = new int[26];
-            String sub = s2.substring(i,i+s1.length());
-            for(int j = 0; j<sub.length(); j++){
-                char ch = sub.charAt(j);
-                arr[ch-'a']++;
-            }
-            if(Arrays.equals(freq,arr)){
+        if(Arrays.equals(freq,win)){
+            return true;
+        }
+        for(int i = s1.length(); i<s2.length(); i++){
+            win[s2.charAt(i)-'a']++;
+            win[s2.charAt(i-s1.length())-'a']--;
+            if(Arrays.equals(freq,win)){
                 return true;
             }
         }
